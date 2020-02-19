@@ -1,0 +1,65 @@
+<div class="card m-3">
+    <div class="card-body">
+      <div class="container mw-100" >
+          <!--  main row 1 -->
+        <div class="row">
+              <!-- column 1 -->
+            <div class="col-md-2">
+                <div class="text-center">
+                    <img [src]="user.avatar_url" class="rounded" width="200" alt="profile avatar">
+                </div>
+            </div>
+               <!-- column 2 -->
+            <div class="col-md-10">
+                <!-- information -->
+                <div class="container d-flex flex-row my-2">
+                    <div class="name font-weight-bold">{{user.id}}.{{user.login | uppercase}} <span><img src="../../../assets/image/correct.svg" width="10" alt="verfied"></span> </div>
+                    <div class="actions ml-auto">
+                      <a [routerLink]="[ '/users-details', user.id ]"><button type="button" class="btn btn-outline-primary btn-sm mr-2" data-toggle="tooltip" data-placement="bottom" title="Edit User">Edit</button></a>
+                        
+                        <button type="button" class="btn btn-light btn-sm" data-toggle="tooltip" data-placement="bottom" title="Go Back" (click)="goBack()">Back</button>
+                    </div>
+                </div>
+                <!-- address section -->
+                <div class="container ">
+                    <div class="bio d-flex flex-row">
+                       
+                            <p class="mr-2">Matt Beavers</p>
+                        
+                            <p class="mr-2">Matt Beavers</p>
+                        
+                            <p class="mr-2">Matt Beavers</p>
+                    
+                    </div>
+
+                </div>
+                <!-- bio section -->
+                <div class="container d-flex flex-row">
+                    <div class="bio">
+                        I distinguish three main text objektive could be merely to inform people. <br>
+                        A second could be persuade people.You want people to bay objective    
+                    </div>
+
+                </div>
+            </div>  
+        </div>
+       
+      </div>
+
+      <form class="form-inline mt-3" (ngSubmit)="onSubmit()">
+      
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="text" class="mr-sm-3">Name:</label>
+          <input type="text" class="form-control" id="text" name="login" [(ngModel)]="user.login" placeholder="New User Name">
+        </div>
+
+        <div class="form-group  mx-sm-3 mb-2">
+            <label for="image" class="mr-sm-3">Image Url:</label>
+            <input type="text" class="form-control" id="image" name="avatar_url" [(ngModel)]="user.avatar_url" placeholder="Avatar Url" aria-describedby="avatar_url">
+            <!-- <small id="avatar_url" class="form-text text-muted">Must be in url form</small> -->
+        </div>
+        <button type="submit" class="btn btn-success mb-2">Save</button>
+      </form>
+
+    </div>
+</div>

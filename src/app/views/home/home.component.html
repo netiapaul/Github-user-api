@@ -1,0 +1,159 @@
+
+<mat-toolbar class="d-flex justify-content-end">
+
+<!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >Add <span> &nbsp; <img src="../assets/image/add.svg" width="20" alt="add icon"></span>  </button>
+</mat-toolbar>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <h5 class="modal-title" id="exampleModalCenterTitle">User's Profile Details:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        ...
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" >Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Main Application -->
+<div class="card m-3" *ngFor="let user of users">
+    <div class="card-body">
+      <div class="container mw-100" >
+          <!--  main row 1 -->
+        <div class="row">
+              <!-- column 1 -->
+            <div class="col-md-2">
+                <div class="text-center">
+                    <img [src]="user.avatar_url" class="rounded" width="200" alt="profile avatar">
+                </div>
+            </div>
+               <!-- column 2 -->
+            <div class="col-md-10">
+                <!-- information -->
+                <div class="container d-flex flex-row mb-2">
+                    <div class="name font-weight-bold">{{user.id}}.{{user.login | uppercase}} <span><img src="../../../assets/image/correct.svg" width="10" alt="verfied"></span> </div>
+                    <div class="actions ml-auto">
+                      <a [routerLink]="[ '/users-details', user.id ]"><button type="button" class="btn btn-outline-primary btn-sm mr-2" data-toggle="tooltip" data-placement="bottom" title="Edit User">Edit</button></a>
+                        
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete User" (click)="delete(user)">Delete</button>
+                    </div>
+                </div>
+                <!-- address section -->
+                <div class="container ">
+                    <div class="bio d-flex flex-row">
+                       
+                            <p class="mr-2">Matt Beavers</p>
+                        
+                            <p class="mr-2">Matt Beavers</p>
+                        
+                            <p class="mr-2">Matt Beavers</p>
+                    
+                    </div>
+
+                </div>
+                <!-- bio section -->
+                <div class="container d-flex flex-row">
+                    <div class="bio">
+                        I distinguish three main text objektive could be merely to inform people. <br>
+                        A second could be persuade people.You want people to bay objective    
+                    </div>
+
+                </div>
+            </div>  
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-2 col-6 d-flex flex-row">
+
+                <div class="media position-relative">
+                    <img src="../../../assets/image/money.svg" width="35" class="mr-3" alt="personal info">
+                    <div class="media-body">
+                      <p class="font-weight-bold">Earnings</p>
+                      <p class="mt-n1 text-muted">$145,200</p>
+                    </div>
+                  </div>
+                
+            </div>
+            <div class="col-md-2 col-6">
+
+                <div class="media position-relative">
+                    <img src="../../../assets/image/expense.svg" width="35" class="mr-3" alt="personal info">
+                    <div class="media-body">
+                      <p class="font-weight-bold">Expenses</p>
+                      <p class="mt-n1 text-muted">$274,230</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2 col-6">
+
+                <div class="media position-relative">
+                    <img src="../../../assets/image/graphic-chart.svg" width="35" class="mr-3" alt="personal info">
+                    <div class="media-body">
+                      <p class="font-weight-bold">Net</p>
+                      <p class="mt-n1 text-muted">$461,120</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2 col-6">
+
+                <div class="media position-relative">
+                    <img src="../../../assets/image/paper.svg" width="35" class="mr-3" alt="personal info">
+                    <div class="media-body">
+                      <p class="font-weight-bold">Repository</p>
+                      <a href="{{user.repos_url}}" target="_blank">
+                        <p class="mt-n1">View all</p>
+                      </a>
+                      
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2 col-6">
+
+                <div class="media position-relative">
+                    <img src="../../../assets/image/speak.svg" width="35" class="mr-3" alt="personal info">
+                    <div class="media-body">
+                      <p class="font-weight-bold">Followers</p>
+                      <a href="{{user.followers_url}}" target="_blank">
+                        <p class="mt-n1">View all</p>
+                      </a>
+                      
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2 col-6">
+
+                <div class="media position-relative">
+                    <img src="../../../assets/image/team.svg" width="35" class="mr-3" alt="personal info">
+                    <div class="media-body">
+                      <p class="font-weight-bold">Network</p>
+                      <a href="{{user.url}}" target="_blank">
+                        <p class="mt-n1">View</p>
+                      </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    
+      </div>
+    </div>
+</div>
