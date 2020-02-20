@@ -15,7 +15,7 @@
                 <div class="container d-flex flex-row my-2">
                     <div class="name font-weight-bold">{{user.id}}.{{user.login | uppercase}} <span><img src="../../../assets/image/correct.svg" width="10" alt="verfied"></span> </div>
                     <div class="actions ml-auto">
-                      <a [routerLink]="[ '/users-details', user.id ]"><button type="button" class="btn btn-outline-primary btn-sm mr-2" data-toggle="tooltip" data-placement="bottom" title="Edit User">Edit</button></a>
+                      <a routerLink='/users-detailsuser/{{user.id}} '><button type="button" class="btn btn-outline-primary btn-sm mr-2" data-toggle="tooltip" data-placement="bottom" title="Edit User">Edit</button></a>
                         
                         <button type="button" class="btn btn-light btn-sm" data-toggle="tooltip" data-placement="bottom" title="Go Back" (click)="goBack()">Back</button>
                     </div>

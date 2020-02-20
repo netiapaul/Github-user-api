@@ -22,34 +22,40 @@
       
         <mat-vertical-stepper linear #stepper>
           <mat-step [stepControl]="firstFormGroup">
-            <form [formGroup]="firstFormGroup">
+            <form #details='ngForm' (ngSubmit)='submitDetail(details)'  [formGroup]="firstFormGroup">
               <ng-template matStepLabel>Fill out your Details</ng-template>
 
               <div class="d-flex flex-column" >
 
                 <mat-form-field>
+                  <mat-label>Profile Avatar</mat-label>
+                  <input matInput placeholder="Avatar Url" name="avatar" aria-describedby="avatar" [(ngModel)]="newUser.avatar_url" formControlName="avatar_url" required>
+                </mat-form-field>
+                <small id="avatar" class="form-text text-muted">Must be in url form for it to show.</small>
+
+                <mat-form-field>
                   <mat-label>First name</mat-label>
-                  <input matInput placeholder="First name" formControlName="firstname" required>
+                  <input matInput placeholder="First name" name="first_name" [(ngModel)]="newUser.first_name" formControlName="firstname" required>
                 </mat-form-field>
 
                 <mat-form-field>
                   <mat-label>Last Name</mat-label>
-                  <input matInput placeholder="Last name" formControlName="lastname" required>
+                  <input matInput placeholder="Last name" name="last_name" [(ngModel)]="newUser.last_name" formControlName="lastname" required>
                 </mat-form-field>
                 
                 <mat-form-field>
                   <mat-label>Phone Number</mat-label> 
-                  <input matInput placeholder="254714028" formControlName="number" required>
+                  <input matInput placeholder="254714028" name="Phone_number" [(ngModel)]="newUser.Phone_number" formControlName="number" required>
                 </mat-form-field>
 
                 <mat-form-field>
                   <mat-label>Email</mat-label>
-                  <input type="email" matInput placeholder="example@gmail.com" formControlName="email" required>
+                  <input type="email" matInput placeholder="example@gmail.com" name="email" [(ngModel)]="newUser.email" formControlName="email" required>
                 </mat-form-field>
                
               </div>
               <div>
-                <button mat-button matStepperNext>Next</button>
+                <button type="submit" mat-button matStepperNext>Next</button>
               </div>
               
             </form>
@@ -58,25 +64,25 @@
 
           <mat-step [stepControl]="secondFormGroup">
 
-            <form [formGroup]="secondFormGroup">
+            <form #security='ngForm' (ngSubmit)='submitSecurity(security)' [formGroup]="secondFormGroup">
               <ng-template matStepLabel>Fill out your Security Details</ng-template>
 
               <div class="d-flex flex-column" >
 
                 <mat-form-field>
                   <mat-label>National ID</mat-label>
-                  <input matInput type="number" placeholder="National ID" formControlName="nationalid" required>
+                  <input matInput placeholder="National ID" name="National_id" [(ngModel)]="newUser.National_id" formControlName="nationalid" required>
                 </mat-form-field>
 
                 <mat-form-field>
                   <mat-label>KRA Pin</mat-label>
-                  <input matInput placeholder="KRA Pin" formControlName="krapin" required>
+                  <input matInput placeholder="KRA Pin" name="KRA_Pin" [(ngModel)]="newUser.KRA_Pin" formControlName="krapin" required>
                 </mat-form-field>
                 
               </div>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button type="submit" mat-button matStepperNext>Next</button>
               </div>
               
             </form>
@@ -85,30 +91,30 @@
 
           <mat-step [stepControl]="thirdFormGroup">
 
-            <form [formGroup]="thirdFormGroup">
+            <form #professional='ngForm' (ngSubmit)='submitProfessional(professional)' [formGroup]="thirdFormGroup">
               <ng-template matStepLabel>Fill out your Professional Details</ng-template>
 
               <div class="d-flex flex-column" >
 
                 <mat-form-field>
                   <mat-label>Company Name</mat-label>
-                  <input matInput placeholder="Company Name" formControlName="companyname" required>
+                  <input matInput placeholder="Company Name" name="Company_Name" [(ngModel)]="newUser.Company_Name" formControlName="companyname" required>
                 </mat-form-field>
 
                 <mat-form-field>
                   <mat-label>Company Location </mat-label>
-                  <input matInput placeholder="Company Location " formControlName="companylocation" required>
+                  <input matInput placeholder="Company Location " name="Company_Location" [(ngModel)]="newUser.Company_Location" formControlName="companylocation" required>
                 </mat-form-field>
 
                 <mat-form-field>
                   <mat-label>Company Revenue </mat-label>
-                  <input matInput placeholder="Company Revenue " formControlName="companyrevenue" required>
+                  <input matInput placeholder="Company Revenue " name="Company_Revenue" formControlName="companyrevenue" [(ngModel)]="newUser.Company_Revenue" required>
                 </mat-form-field>
                 
               </div>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button type="submit" mat-button matStepperNext>Next</button>
               </div>
               
             </form>
@@ -119,21 +125,57 @@
             <ng-template matStepLabel>Done</ng-template>
             <p>You are now done.</p>
 
-            <form [formGroup]="thirdFormGroup">
+            <form>
               
-
               <div class="d-flex flex-column" >
 
                 <div class="input-group input-group-sm mb-3">
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                  <div class="form-group">
+                    <label for="inputAddress2">First Name</label>
+                    <input type="text" class="form-control" name="first_name" [(ngModel)]="newUser.first_name"  readonly>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" [(ngModel)]="newUser.last_name"  readonly>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Phone Number</label>
+                    <input type="text" class="form-control" name="Phone_number" [(ngModel)]="newUser.Phone_number" readonly >
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Email</label>
+                    <input type="text" class="form-control" name="email" [(ngModel)]="newUser.email" readonly >
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">National ID</label>
+                    <input type="text" class="form-control" name="National_id" [(ngModel)]="newUser.National_id" readonly >
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">KRA PIN</label>
+                    <input type="text" class="form-control" name="KRA_Pin" [(ngModel)]="newUser.KRA_Pin" readonly >
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Company Name</label>
+                    <input type="text" class="form-control" name="Company_Name" [(ngModel)]="newUser.Company_Name" readonly >
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Company Location</label>
+                    <input type="text" class="form-control" name="Company_Location" [(ngModel)]="newUser.Company_Location" readonly >
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Company Revenue</label>
+                    <input type="text" class="form-control" name="Company_Revenue" [(ngModel)]="newUser.Company_Revenue" readonly >
+                  </div>
+
                 </div>
-                
-              </div>              
+              </div>    
+
             </form>
 
             <div>
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button (click)="stepper.reset()">Reset</button>
+              
             </div>
           </mat-step>
         </mat-vertical-stepper>
@@ -142,13 +184,48 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" >Save</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
       </div>
     </div>
   </div>
 </div>
 
+
+<!-- <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Company Revenue</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@twitter</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table> -->
 
 
 <!-- Main Application -->
@@ -166,7 +243,7 @@
                <!-- column 2 -->
             <div class="col-md-10">
                 <!-- information -->
-                <div class="container d-flex flex-row mb-2">
+                <div class="container d-flex flex-row my-2">
                     <div class="name font-weight-bold">{{user.id}}.{{user.login | uppercase}} <span><img src="../../../assets/image/correct.svg" width="10" alt="verfied"></span> </div>
                     <div class="actions ml-auto">
                       <a [routerLink]="[ '/users-details', user.id ]"><button type="button" class="btn btn-outline-primary btn-sm mr-2" data-toggle="tooltip" data-placement="bottom" title="Edit User">Edit</button></a>
@@ -176,14 +253,19 @@
                 </div>
                 <!-- address section -->
                 <div class="container ">
-                    <div class="bio d-flex flex-row">
-                       
-                            <p class="mr-2">Matt Beavers</p>
-                        
-                            <p class="mr-2">Matt Beavers</p>
-                        
-                            <p class="mr-2">Matt Beavers</p>
-                    
+                    <div class="row">
+                            <div class="col-md-3 col-12">
+                              <p class="mr-2"><img src="../../../assets/image/mail.svg" width="15" alt="mail"> {{user.email}}</p>
+                            </div>
+
+                            <div class="col-md-3 col-12">
+                              <p class="mr-2"><img src="../../../assets/image/work (1).svg" width="15" alt="companyname"> {{user.Company_Name}}</p>
+                            </div>
+
+                            <div class="col-md-3 col-12">
+                              <p class="mr-2"><img src="../../../assets/image/unearned.svg" width="20" alt="revenue"> {{user.Company_Revenue}}</p>
+
+                            </div>
                     </div>
 
                 </div>
