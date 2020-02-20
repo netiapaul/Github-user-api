@@ -13,11 +13,18 @@ export class UsersService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
+
   /** GET users from the server */
 getUsers(): Observable<Users[]> {
   return this.http.get<Users[]>(this.usersUrl)
 }
 
+// update a single user by id
+addUser(user:Users):Observable<Users>{
+  return this.http.post<Users>(this.usersUrl,user,this.httpOptions)
+}
+
+// delete a single user by id
 deleteUser(user):Observable<Users>{
   const id = typeof user === 'number' ? user : user.id;
   const url = `${this.usersUrl}/${id}`;
@@ -29,7 +36,7 @@ getUser(id:number):Observable<Users>{
   const URl=`${this.usersUrl}/${id}`
   return this.http.get<Users>(URl)
 }
-
+// update a single user by id
 updateUSer(user:Users):Observable<Users>{
   return this.http.put<Users>(this.usersUrl,user,this.httpOptions)
 }

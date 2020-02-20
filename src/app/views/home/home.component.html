@@ -8,7 +8,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade mx-auto" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
@@ -17,7 +17,128 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        ...
+        <br>
+
+      
+        <mat-vertical-stepper linear #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Fill out your Details</ng-template>
+
+              <div class="d-flex flex-column" >
+
+                <mat-form-field>
+                  <mat-label>First name</mat-label>
+                  <input matInput placeholder="First name" formControlName="firstname" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder="Last name" formControlName="lastname" required>
+                </mat-form-field>
+                
+                <mat-form-field>
+                  <mat-label>Phone Number</mat-label> 
+                  <input matInput placeholder="254714028" formControlName="number" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput placeholder="example@gmail.com" formControlName="email" required>
+                </mat-form-field>
+               
+              </div>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+              
+            </form>
+
+          </mat-step>
+
+          <mat-step [stepControl]="secondFormGroup">
+
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Fill out your Security Details</ng-template>
+
+              <div class="d-flex flex-column" >
+
+                <mat-form-field>
+                  <mat-label>National ID</mat-label>
+                  <input matInput type="number" placeholder="National ID" formControlName="nationalid" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>KRA Pin</mat-label>
+                  <input matInput placeholder="KRA Pin" formControlName="krapin" required>
+                </mat-form-field>
+                
+              </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+              
+            </form>
+
+          </mat-step>
+
+          <mat-step [stepControl]="thirdFormGroup">
+
+            <form [formGroup]="thirdFormGroup">
+              <ng-template matStepLabel>Fill out your Professional Details</ng-template>
+
+              <div class="d-flex flex-column" >
+
+                <mat-form-field>
+                  <mat-label>Company Name</mat-label>
+                  <input matInput placeholder="Company Name" formControlName="companyname" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Company Location </mat-label>
+                  <input matInput placeholder="Company Location " formControlName="companylocation" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Company Revenue </mat-label>
+                  <input matInput placeholder="Company Revenue " formControlName="companyrevenue" required>
+                </mat-form-field>
+                
+              </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+              
+            </form>
+
+          </mat-step>
+        
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p>You are now done.</p>
+
+            <form [formGroup]="thirdFormGroup">
+              
+
+              <div class="d-flex flex-column" >
+
+                <div class="input-group input-group-sm mb-3">
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                
+              </div>              
+            </form>
+
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-vertical-stepper>
+        
+        
       </div>
 
       <div class="modal-footer">
